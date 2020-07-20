@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: black;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paint.PaintController">
+   <left>
+      <VBox prefHeight="200.0" spacing="8.0" BorderPane.alignment="CENTER">
+         <children>
+            <TitledPane text="Drawing Color">
+               <content>
+                  <VBox maxHeight="1.7976931348623157E308" spacing="2.0">
+                     <children>
+                        <RadioButton fx:id="blackRadioButton" mnemonicParsing="false" onAction="#colorRadioButtonSelected" selected="true" text="Black">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="colorToggleGroup" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="redRadioButton" mnemonicParsing="false" onAction="#colorRadioButtonSelected" text="Red" toggleGroup="$colorToggleGroup" />
+                        <RadioButton fx:id="greenRadioButton" mnemonicParsing="false" onAction="#colorRadioButtonSelected" text="Green" toggleGroup="$colorToggleGroup" />
+                        <RadioButton fx:id="blueRadioButton" mnemonicParsing="false" onAction="#colorRadioButtonSelected" text="Blue" toggleGroup="$colorToggleGroup" />
+                     </children></VBox>
+               </content>
+            </TitledPane>
+            <TitledPane text="Pen Size">
+               <content>
+                  <VBox maxHeight="1.7976931348623157E308">
+                     <children>
+                        <Slider fx:id="sizeSlider" onMouseClicked="#sizeSliderDragged" onMouseDragged="#sizeSliderDragged" />
+                     </children></VBox>
+               </content>
+            </TitledPane>
+            <TitledPane animated="false" text="Drawing Shape">
+               <content>
+                  <VBox maxHeight="1.7976931348623157E308" spacing="2.0">
+                     <children>
+                        <RadioButton fx:id="squareRadioButton" mnemonicParsing="false" text="Square">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="shapeToggleGroup" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="circleRadioButton" mnemonicParsing="false" selected="true" text="Circle" toggleGroup="$shapeToggleGroup" />
+                        <RadioButton fx:id="hexagonRadioButton" mnemonicParsing="false" text="Hexagon" toggleGroup="$shapeToggleGroup" />
+                        <RadioButton fx:id="rhombusRadioButton" mnemonicParsing="false" text="Rhombus" toggleGroup="$shapeToggleGroup" />
+                     </children>
+                  </VBox>
+               </content>
+            </TitledPane>
+            <Button fx:id="clearButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clearButtonPressed" text="Clear" />
+         </children>
+         <padding>
+            <Insets right="8.0" />
+         </padding>
+      </VBox>
+   </left>
+   <padding>
+      <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+   </padding>
+   <center>
+      <Canvas fx:id="drawingCanvas" height="460.0" onMouseClicked="#drawingAreaMouseDragged" onMouseDragged="#drawingAreaMouseDragged" width="455.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
